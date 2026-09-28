@@ -1,0 +1,18 @@
+name: tests
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python -m pip install -e ".[dashboard,test]"
+      - run: python -m pytest -q
+      - run: python -m compileall -q red_flujos app.py run_demo.py launcher_core.py iniciar_red_flujos.pyw
+      - run: python scripts/auditar_publicacion.py
+      - run: red-flujos --source synthetic > demo.txt

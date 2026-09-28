@@ -1,0 +1,18 @@
+transaccion:
+  mapa_sentido:
+    FLUJO: DEBITO
+reconciliacion:
+  modo: ninguna
+tipo_persona:
+  juridica_valores: [ORGANIZACION]
+presentacion:
+  perfil: logistica
+  identificador: ID
+  entidad: instalación
+  cantidad: Peso
+  unidad: kg
+  escala: 1
+  sufijo_escala: ""
+  simbolo: ""
+  precision: 0
+  relaciones: Operadores

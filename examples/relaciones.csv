@@ -1,0 +1,3 @@
+entidad,nombre_entidad,relacionado,nombre_relacionado,tipo_relacion,estado,categoria
+ORG-001,Planta Uno,OPER-01,Operador Uno,operado_por,activo,logistica
+ORG-002,Bodega Norte,OPER-01,Operador Uno,operado_por,activo,logistica

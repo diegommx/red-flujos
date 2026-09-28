@@ -1,0 +1,98 @@
+# Configuración pública de ejemplo. No contiene conexiones ni datos privados.
+# La aplicación pregunta qué fuente usar antes de cargar datos.
+fuente:
+  tipo: synthetic
+  archivos:
+    transacciones: ""
+    vinculados: ""
+    nombres: ""
+  sql:
+    driver: "ODBC Driver 18 for SQL Server"
+    server: ""
+    database: ""
+    trusted_connection: true
+    max_rows: 100000
+    queries:
+      transacciones: ""
+      vinculados: ""
+      nombres: ""
+    params:
+      transacciones: []
+      vinculados: []
+      nombres: []
+
+# Cualquier conjunto de datos puede usar sus propias columnas mediante un YAML
+# privado. Estas columnas de ejemplo son deliberadamente genéricas.
+columnas_transaccional:
+  id_evento: id_operacion
+  actor: nit
+  contraparte: nit_contraparte
+  fecha: fecha_str
+  cantidad: valor
+  tipo_evento: transaccion
+  canal: canal
+  modalidad: nombre_tx
+  tipo_actor: tipo_persona_nit
+  nombre_contraparte: nombre_contraparte
+
+columnas_vinculados:
+  entidad: nit_empresa
+  nombre_entidad: nombre_empresa
+  relacionado: nit_vinculado
+  nombre_relacionado: nombre_vinculado
+  tipo_relacion: relacion
+  estado: estado
+  categoria: codigo_ciiu
+
+columnas_nombres:
+  id: nit
+  nombre: nombre
+
+transaccion:
+  mapa_sentido:
+    RETIRO: DEBITO
+    CONSIGNACION: CREDITO
+
+tipo_persona:
+  juridica_valores: [PJ, JURIDICA, JURIDICO, J]
+
+clientes:
+  auto_detectar: true
+  manual: {}
+
+filtros:
+  top_n_externos: 60
+  monto_minimo: 0
+  excluir_nits: []
+  incluir_forzados: []
+
+# "exacta" es la opción segura para nuevos conjuntos de datos. La fusión por
+# prefijos queda disponible sólo si el analista la habilita conscientemente.
+homologacion:
+  modo: exacta
+  unir_nits: {}
+
+# La reconciliación espejo aplica sólo a fuentes que registran cada flujo en
+# el emisor y el receptor. 'auto' reconcilia sólo el ejemplo sintético;
+# para CSV, Excel y SQL conserva todos los eventos salvo elección explícita.
+reconciliacion:
+  modo: auto
+
+vinculados:
+  roles_control: []
+  umbral_hub: 3
+
+presentacion:
+  perfil: financiero
+  identificador: ID
+  entidad: actor
+  cantidad: Monto
+  unidad: COP
+  escala: 1000000
+  sufijo_escala: M
+  simbolo: $
+  precision: 1
+  relaciones: Relaciones
+
+logging:
+  nivel: INFO

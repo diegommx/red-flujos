@@ -1,0 +1,4 @@
+id_evento,actor,contraparte,fecha,cantidad,tipo_evento,canal,modalidad,tipo_actor,nombre_contraparte
+f1,ORG-001,ORG-002,2026-01-10T09:00:00,150,FLUJO,terrestre,despacho,organizacion,Bodega Norte
+f2,ORG-002,ORG-003,2026-01-11T14:30:00,120,FLUJO,terrestre,despacho,organizacion,Centro Sur
+f3,ORG-001,ORG-003,2026-01-12T11:00:00,80,FLUJO,aereo,despacho,organizacion,Centro Sur
